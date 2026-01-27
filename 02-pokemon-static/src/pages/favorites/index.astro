@@ -1,8 +1,10 @@
 ---
+import { FavoritePokemons } from "@poke-app/components/pokemons/FavoritePokemons";
 import Title from "@poke-app/components/shared/Title.astro";
 import MainLayout from "@poke-app/layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Favorites | PokeApp">
   <Title>Favorites</Title>
+  <FavoritePokemons client:only="solid-js" />
 </MainLayout>

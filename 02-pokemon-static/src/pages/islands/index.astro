@@ -1,0 +1,15 @@
+---
+import { Counter } from "@poke-app/components/counter";
+import Title from "@poke-app/components/shared/Title.astro";
+import MainLayout from "@poke-app/layouts/MainLayout.astro";
+---
+
+<MainLayout title="Islands | PokeApp">
+  <Title>Astro Islands</Title>
+  <Counter
+    transition:persist="counter"
+    transition:persist-props
+    client:visible
+    initValue={15}
+  />
+</MainLayout>
