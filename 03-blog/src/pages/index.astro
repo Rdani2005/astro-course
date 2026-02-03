@@ -4,7 +4,10 @@ import MainLayout from "@blog-app/layouts/MainLayout.astro";
 import { siteConfig } from "@blog-app/settings";
 import { getCollection } from "astro:content";
 
-const blogPosts = await getCollection("blog");
+const blogPosts = await getCollection(
+  "blog",
+  (post) => post.data.isDraft === false,
+);
 ---
 
 <MainLayout title="Home | Blog App">
@@ -15,6 +18,8 @@ const blogPosts = await getCollection("blog");
       >
         {siteConfig.title}
       </h1>
+      <a class="mr-2" href="/blog/1">Blog paginado</a>
+      <a class="mr-2" href="/authors">Autores</a>
 
       <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
         {blogPosts.map((post) => <BlogPost post={post} />)}
@@ -22,3 +27,10 @@ const blogPosts = await getCollection("blog");
     </div>
   </section>
 </MainLayout>
+
+<style>
+  @reference "../styles/global.css";
+  a {
+    @apply text-blue-500 hover:underline;
+  }
+</style>
