@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import BlogPost from "@blog-app/components/BlogPost.astro";
 import MainLayout from "@blog-app/layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
+import { siteConfig } from "@blog-app/settings";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const blogPosts = await getCollection("blog");
@@ -15,7 +16,7 @@ const { page } = Astro.props;
 <MainLayout>
   <div class="py-10 mx-auto">
     <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-white">
-      Fernando's Blog paginado
+      {siteConfig.title}
     </h1>
   </div>
 
@@ -26,15 +27,12 @@ const { page } = Astro.props;
   </section>
 
   <section aria-label="Controles" class="flex justify-between mt-10">
-    <!--   page .. ?? prev   -->
     <a
       href={page.url.prev}
       class:list={{
         disabled: !page.url.prev,
       }}>Anteriores</a
     >
-
-    <!--   page .. ?? next   -->
     <a
       href={page.url.next}
       class:list={{

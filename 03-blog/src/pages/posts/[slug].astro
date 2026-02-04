@@ -44,7 +44,7 @@ const { Content, headings } = await post.render();
       transition:name={`${author.name}-author-image`}
     />
     <div class="flex flex-col ml-5">
-      <a href={`/blog/${frontmatter.author.id}`}>{author.name}</a>
+      <a href={`/authors/${frontmatter.author.id}`}>{author.name}</a>
       <span class="text-xs text-gray-200"
         >{Formatter.formatDate(frontmatter.date)}</span
       >
