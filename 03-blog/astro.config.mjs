@@ -9,6 +9,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
   integrations: [mdx()],
+  site: "https://rdani2005.com",
 });
